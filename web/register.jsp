@@ -24,6 +24,13 @@
         * name and value
         * enctype = multipart/form-data
      -->
+    <%
+        String message = "";
+        if (request.getAttribute("message") != null) {
+            message = (String) request.getAttribute("message");
+        }
+    %>
+    <h2 style="color: red;"><%=message%></h2>
     <form action="RegisterServlet" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -41,8 +48,8 @@
             <tr>
                 <td class="td1">Gender:</td>
                 <td>
-                    <input type="radio" name="sex" value="male"> 男
-                    <input type="radio" name="sex" value="female"> 女
+                    <input type="radio" name="gender" value="male"> 男
+                    <input type="radio" name="gender" value="female"> 女
                 </td>
             </tr>
             <tr>
