@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.allenanker.utils.CookieUtils" %><%--
   Created by IntelliJ IDEA.
   User: Fenyr_Allen
   Date: 2018-09-26
@@ -22,10 +22,24 @@
     </div>
     <%
         String username = "";
+
+        Cookie[] cookies = request.getCookies();
+        Cookie cookie = CookieUtils.findCookie(cookies, "username");
+        if (cookie != null) {
+            username = cookie.getValue();
+        }
+
         if (session.getAttribute("username") != null) {
-        username = (String) session.getAttribute("username");
+            username = (String) session.getAttribute("username");
+        }
+
+        String message = "";
+        if (request.getAttribute("message") != null) {
+            message = (String) request.getAttribute("message");
         }
     %>
+    <h2 style="color: red;"><%=message%>
+    </h2>
     <form action="LoginServlet" method="post">
         <table>
             <tr>
@@ -49,7 +63,6 @@
                 </td>
             </tr>
         </table>
-
     </form>
 </div>
 </body>

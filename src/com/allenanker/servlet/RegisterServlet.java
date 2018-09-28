@@ -18,12 +18,6 @@ import java.util.*;
 @WebServlet(name = "RegisterServlet", urlPatterns = "/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 
-    @Override
-    public void init() throws ServletException {
-        List<User> users = new ArrayList<>();
-        this.getServletContext().setAttribute("users", users);
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
